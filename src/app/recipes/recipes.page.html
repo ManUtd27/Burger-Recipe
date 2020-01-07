@@ -1,13 +1,14 @@
 <ion-header>
     <ion-toolbar color="medium">
         <ion-title>Recipes</ion-title>
+        <ion-badge slot="primary"  color="medium">{{this.recipes.length}}</ion-badge>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-list>
         <ion-list-header>
-            <ion-label>In-N-Out Burger</ion-label>
+            <ion-label>{{this.recipes.length > 0 ? 'In-N-Out Burger': 'No Recipes'}}</ion-label>
         </ion-list-header>
         <app-recipe-item *ngFor="let recipe of recipes" [recipeItem]="recipe"></app-recipe-item>
     </ion-list>

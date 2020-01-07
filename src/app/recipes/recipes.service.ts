@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Recipe} from './recipe';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RecipesService {
+    recipeChanged = new BehaviorSubject<Recipe[]>(null);
     private recipes: Recipe[] = [
         {
             id: 'r1',
@@ -29,14 +31,20 @@ export class RecipesService {
             title: 'Best Burger in Town',
             imageUrl: 'https://i.ytimg.com/vi/AQIExuYef3Y/maxresdefault.jpg',
             ingredients: ['Cheese', 'Meat', 'Grilled Onions', 'French Fries']
+        },
+        {
+            id: 'r5',
+            title: 'Lettuce Wrap Style',
+            imageUrl: 'https://images.squarespace-cdn.com/content/v1/563ff408e4b0bcc74e2aa3c0/1534092161941-OK19QQHKEUEO1XW4FQ3O/ke17ZwdGBToddI8pDm48kJuqRxIpT-K8-hBs4ffXF0Z7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmujyyI7Frso6MRdplGTbhDruLwzBebSqxotBf75yyvV0gz6Zu76HFfnTZUZc5Jxuv/In+N+Out+Burger+Secret+Menu+Tips+%26+Tricks+%7C+coupleinthekitchen.com',
+            ingredients: ['Cheese', 'Meat', 'Grilled Onions', 'Tomatoes', 'Lettuce', 'Pickles']
         }
     ];
 
     constructor() {
     }
 
-    getAllRecipes(): Recipe[] {
-        return [...this.recipes];
+    getAllRecipes() {
+        this.recipeChanged.next(this.recipes.slice());
     }
 
     getRecipe(recipeId: string): Recipe {
@@ -50,5 +58,6 @@ export class RecipesService {
         this.recipes = this.recipes.filter(recipe => {
             return recipe.id !== recipeId;
         });
+        this.recipeChanged.next(this.recipes.slice());
     }
 }
