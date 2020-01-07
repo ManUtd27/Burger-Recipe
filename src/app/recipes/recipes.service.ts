@@ -23,6 +23,12 @@ export class RecipesService {
             title: 'Animal Style',
             imageUrl: 'https://a57.foxnews.com/a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2018/09/640/320/1862/1048/in-n-out-2.jpg?ve=1&tl=1?ve=1&tl=1',
             ingredients: ['Cheese', 'Meat', 'Grilled Onions', 'French Fries']
+        },
+        {
+            id: 'r4',
+            title: 'Best Burger in Town',
+            imageUrl: 'https://i.ytimg.com/vi/AQIExuYef3Y/maxresdefault.jpg',
+            ingredients: ['Cheese', 'Meat', 'Grilled Onions', 'French Fries']
         }
     ];
 

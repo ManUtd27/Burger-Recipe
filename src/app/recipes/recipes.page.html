@@ -6,6 +6,9 @@
 
 <ion-content>
     <ion-list>
+        <ion-list-header>
+            <ion-label>In-N-Out Burger</ion-label>
+        </ion-list-header>
         <app-recipe-item *ngFor="let recipe of recipes" [recipeItem]="recipe"></app-recipe-item>
     </ion-list>
 </ion-content>
